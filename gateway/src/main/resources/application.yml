@@ -1,0 +1,31 @@
+server:
+  port: ${SERVER_PORT:8888}
+spring:
+  application:
+    name: SERVICE-GATEWAY
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: false
+eureka:
+      client:
+        service-url:
+          defaultZone: ${EUREKA_URL:http://localhost:8761/eureka/}
+        registry-fetch-interval-seconds: 2
+        initial-instance-info-replication-interval-seconds: 1
+      instance:
+        hostname: localhost
+        prefer-ip-address: true
+        ip-address: ${SERVICE_IP:127.0.0.1}
+        lease-renewal-interval-in-seconds: 5
+        instance-id: ${spring.application.name}:${server.port}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,gateway
+  endpoint:
+    gateway:
+      enabled: true

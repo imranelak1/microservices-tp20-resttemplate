@@ -1,0 +1,33 @@
+GET http://host.docker.internal:19204/SERVICE-CLIENT/api/client
+HTTP 200
+[
+  {
+    "id": 1,
+    "nom": "Rabab SELIMANI",
+    "age": 23.0
+  },
+  {
+    "id": 2,
+    "nom": "Amal RAMI",
+    "age": 22.0
+  },
+  {
+    "id": 3,
+    "nom": "Samir SAFI",
+    "age": 22.0
+  }
+]
+GET http://host.docker.internal:19204/SERVICE-CAR/api/car/1
+HTTP 200
+{
+  "id": 1,
+  "brand": "Toyota",
+  "model": "Yaris",
+  "matricule": "A 25 333",
+  "clientId": 1,
+  "client": {
+    "id": 1,
+    "nom": "Rabab SELIMANI",
+    "age": 23.0
+  }
+}
